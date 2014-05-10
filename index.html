@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Video with div overlays - jsFiddle demo</title>
+  
+  <script type='text/javascript' src='//code.jquery.com/jquery-2.1.0.js'></script>
+ <!-- <link rel="stylesheet" type="text/css" href="/css/result-light.css"> -->
+  <script type='text/javascript' src="scripts/howler.js"></script>
+    
+  <style type='text/css'>
+    body {
+        background-color: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #main_container {
+        float: left;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+    }
+    #video {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        min-height: 100%;
+        min-width: 100%;
+        z-index: 9997;
+    }
+    #content {
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        min-height: 100%;
+        min-width: 100%;
+        z-index: 9999;
+    }
+    p {
+        font-size:18px;
+        color:#f75b68;
+    }
+    #overlay {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        z-index: 9998;
+    }
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+$(document).ready(function () {
+
+    var windowH = $(window).height();
+    $('#main_container, #overlay').height(windowH);
+
+    $(window).resize(function () {
+        var windowH = $(window).height();
+        $('#main_container, #overlay').height(windowH);
+    });
+
+    var sound = new Howl({
+      urls: ['https://dl.dropboxusercontent.com/u/5589412/Mr.%20Little%20Jeans%20-%20The%20Suburbs%20%28Arcade%20Fire%20Cover%29.mp3'],
+      sprite: {
+        blast: [0, 1000],
+        laser: [2000, 3000],
+        winner: [4000, 7500]
+      },
+      volume: 0.7
+    });
+
+    // unleash the magic
+    $('#jackalope').click(function() {
+      //alert( "blam" );
+      sound.play('winner');
+      sound.fade(0.7, 0.0, 400);
+    });
+    
+});
+
+
+// https://db.tt/5PmymAcK
+// https://dl.dropboxusercontent.com/u/5589412/Mr.%20Little%20Jeans%20-%20The%20Suburbs%20%28Arcade%20Fire%20Cover%29.mp3
+// https://www.dropbox.com/s/ae6fnresbb78045/dave_chappelle_as_prince2.jpg
+
+
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <div id="main_container ">
+    <video id="video" width="" height="" loop="loop" autoplay="" controls="none">
+        <source src="http://science-inc.com/vids/scioffice2.mp4" type="video/mp4" />Your browser does not support the video tag.</video>
+    <div id="overlay"></div>
+    <div id="content">
+        <p>Jack</p>
+        <img id="jackalope" src="http://www.sudftw.com/jackalope1.gif" width="100" height="161" />
+    </div>
+</div>
+
+  
+</body>
+
+
+</html>
+
