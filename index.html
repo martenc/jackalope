@@ -8,6 +8,7 @@
   <script type='text/javascript' src='//code.jquery.com/jquery-2.1.0.js'></script>
  <!-- <link rel="stylesheet" type="text/css" href="/css/result-light.css"> -->
   <script type='text/javascript' src="scripts/howler.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r57/three.min.js"></script>
     
   <style type='text/css'>
     body {
@@ -26,7 +27,7 @@
         height: 100%;
         background-color: #000000;
     }
-    #video {
+    #videoPlayer {
         position: absolute;
         left: 0px;
         top: 0px;
@@ -35,6 +36,7 @@
         z-index: 9997;
     }
     #content {
+        display:none; /* initially hide */
         position: absolute;
         left: 100px;
         top: 100px;
@@ -57,10 +59,34 @@
   </style>
   
 
-
 <script type='text/javascript'>//<![CDATA[ 
+
+function showSomething(objIdToShow) {
+        $('#' + objIdToShow).show('slow', function() {
+            // Animation complete.
+        });
+    }
+
+// super lame but reliable way to delay the call of some function
+var counter = 1, jankyTimeout;
+function loopFunction () {
+    if (counter < 10 ) {
+        counter++;
+        if (counter > 2) {
+            $('#content').hide();
+        }
+        else {
+            showSomething('content');
+        }
+        console.log(counter);
+        jankyTimeout = setTimeout(loopFunction, 5000);
+    }
+}
+
 $(window).load(function(){
-$(document).ready(function () {
+$(function () {
+
+    jankyTimeout = setTimeout(loopFunction, 10000); //setTimeout(showSomething('content'), 50000);
 
     var windowH = $(window).height();
     $('#main_container, #overlay').height(windowH);
@@ -75,16 +101,26 @@ $(document).ready(function () {
       sprite: {
         blast: [0, 1000],
         laser: [2000, 3000],
-        winner: [4000, 7500]
+        winner: [4000, 13000]
       },
       volume: 0.7
     });
 
+
     // unleash the magic
     $('#jackalope').click(function() {
-      //alert( "blam" );
       sound.play('winner');
-      sound.fade(0.7, 0.0, 400);
+      sound.fade(0.7, 0.0, 13000);
+
+      // change video
+      var newVideo = 'http://science-inc.com/vids/maker1.mp4';
+      $('#main_container video source').attr('src', newVideo);
+      $('#main_container video').load();
+
+      // hide jack
+      $('#content').hide('slow', function() {
+            // Animation complete.
+        });
     });
     
 });
@@ -94,6 +130,9 @@ $(document).ready(function () {
 // https://dl.dropboxusercontent.com/u/5589412/Mr.%20Little%20Jeans%20-%20The%20Suburbs%20%28Arcade%20Fire%20Cover%29.mp3
 // https://www.dropbox.com/s/ae6fnresbb78045/dave_chappelle_as_prince2.jpg
 
+// http://science-inc.com/vids/maker1.mp4
+
+
 
 });//]]>  
 
@@ -102,12 +141,18 @@ $(document).ready(function () {
 
 </head>
 <body>
-  <div id="main_container ">
-    <video id="video" width="" height="" loop="loop" autoplay="" controls="none">
-        <source src="http://science-inc.com/vids/scioffice2.mp4" type="video/mp4" />Your browser does not support the video tag.</video>
+
+    
+
+
+  <div id="main_container">
+
+    <video id="videoPlayer" width="" height="" loop="loop" autoplay="" controls="none">
+        <source src="http://science-inc.com/vids/scioffice2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+    </video>
     <div id="overlay"></div>
     <div id="content">
-        <p>Jack</p>
         <img id="jackalope" src="http://www.sudftw.com/jackalope1.gif" width="100" height="161" />
     </div>
 </div>
