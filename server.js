@@ -11,8 +11,6 @@ app.get('/', function(req, res) {
     //res.redirect(301, "http://your.tumblr.com");
 });
 
-// spin up server (appfog)
-app.listen(process.env.VMC_APP_PORT || 8080, null);
-// spin up server (azure or other)
-//app.listen(process.env.PORT || 8080, null);
-console.log('server running on port 8080');
+// spin up server 
+app.listen(process.env.PORT || 8080, null);
+console.log('server is running...');
