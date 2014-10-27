@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hsrobmln/2048"
+    "url": "https://github.com/martenc/jackalope.git"
   },
   "author": "Marten Compoc",
   "license": "MIT",
-  "homepage": "https://github.com/martenc/jackalope.git"
+  "homepage": "https://github.com/martenc/jackalope"
 }
