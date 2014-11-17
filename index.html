@@ -125,11 +125,11 @@ $(function () {
 
     // transition sound
     var soundJack1 = new Howl({
-        urls: ['https://dl.dropboxusercontent.com/u/5589412/Mr.%20Little%20Jeans%20-%20The%20Suburbs%20%28Arcade%20Fire%20Cover%29.mp3'],
+        urls: ['https://dl.dropboxusercontent.com/u/5589412/_jams/Drake-0-100-grandtheft-bootleg.mp3'],
         sprite: {
             blast: [0, 1000],
             laser: [2000, 3000],
-            winner: [4000, 13000]
+            winner: [123400, 306000]
         },
         volume: 0.8
     });
@@ -138,16 +138,17 @@ $(function () {
     // unleash the magic
     $('#jackalope').click(function() {
         
-        soundStart.fade(0.4, -0.5, 7000);
-        //soundJack1.play('winner');
+        soundStart.fade(0.4, -0.5, 3000);
+        soundJack1.play('winner');
         //soundJack1.fade(0.7, 0.0, 13000);
+
 
         // show transition video
         $('#transition_container').show();
 
 
         // change video
-        var newVideo = 'http://science-inc.com/vids/maker1.mp4';
+        var newVideo = 'http://carlsberg.northkingdom.s3.amazonaws.com/foreshadowing-12.webm';
         $('#main_container video source').attr('src', newVideo);
         $('#main_container video').load();
 
@@ -156,7 +157,7 @@ $(function () {
             // Animation complete.
         });
 
-        $('#transition_container').fadeOut(1000);
+        $('#transition_container').fadeOut(1500);
         //setTimeout(hideSomething('transition_container'), 70000);
         
     });
@@ -165,6 +166,8 @@ $(function () {
 
 
 /*
+https://dl.dropboxusercontent.com/u/5589412/_jams/Drake-0-100-grandtheft-bootleg.mp3
+
 https://db.tt/5PmymAcK
 https://dl.dropboxusercontent.com/u/5589412/Mr.%20Little%20Jeans%20-%20The%20Suburbs%20%28Arcade%20Fire%20Cover%29.mp3
 https://www.dropbox.com/s/ae6fnresbb78045/dave_chappelle_as_prince2.jpg
