@@ -1,11 +1,14 @@
 {
-"name": "jackalope",
-"main": "server.js",
-"dependencies": {
-"express": "4.10.2"
-},
+  "name": "jackalope",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "4.10.2"
+    },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -13,5 +16,8 @@
   },
   "author": "Marten Compoc",
   "license": "MIT",
-  "homepage": "https://github.com/martenc/jackalope"
+  "homepage": "https://github.com/martenc/jackalope",
+  "engines": {
+    "node": "0.10.x"
+  }
 }
